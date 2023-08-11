@@ -7,7 +7,7 @@ from IPython.display import Audio
 
 config = BarkConfig()
 model = Bark.init_from_config(config)
-model.load_checkpoint(config, checkpoint_dir="/content/clone-voices/model/", eval=True)
+model.load_checkpoint(config, checkpoint_dir="/content/clone-voices/bark/", eval=True)
 
 model.to("cuda")
 
