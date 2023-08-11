@@ -7,7 +7,7 @@ from IPython.display import Audio
 
 config = BarkConfig()
 model = Bark.init_from_config(config)
-model.load_checkpoint(config, checkpoint_dir="/content/model/", eval=True)
+model.load_checkpoint(config, checkpoint_dir="/content/clone-voices/model/", eval=True)
 
 model.to("cuda")
 
@@ -16,9 +16,9 @@ model.to("cuda")
 
 # cloning a speaker.
 # It assumes that you have a speaker file in `bark_voices/speaker_n/speaker.wav` or `bark_voices/speaker_n/speaker.npz`
-output_dict = model.synthesize(text, config, speaker_id="speaker", voice_dirs="bark_voices", temperature=0.95)
+output_dict = model.synthesize(text, config, speaker_id="speakers", voice_dirs="/content/clone-voices/bark_voices", temperature=0.95)
 
-write_wavfile(filename="/content/output.wav", rate = 24000, data = output_dict['wav'])
+write_wavfile(filename="/content/clone-voices/output.wav", rate = 24000, data = output_dict['wav'])
 
 # play text in notebook
 Audio(output_dict['wav'], rate=24000)
